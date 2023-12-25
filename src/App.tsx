@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes, BrowserRouter, Link, Outlet } from 'react-router-dom';
+import Aboutus from './ROUTING/about';
+import Main from './ROUTING';
+import Contact from './ROUTING/contact';
+import Header from './ROUTING/header';
+import allin from './typescript/app';
 
-function App() {
+const App = () => {
+  allin()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+   <Header/>
+    <Routes>
+     
+
+      <Route path="/" element={<Main />} />
+      <Route path="/about-us" element={<Aboutus />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="*" element={`404 ошибка!!! Не правильный сервер`} />
+    </Routes>
+  </BrowserRouter>
+
+  
   );
-}
+};
 
 export default App;
